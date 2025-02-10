@@ -11,3 +11,4 @@ sources:
       - name: OrderDetails
       - name: Employee
       - name: Offices
+      - name: Shipments

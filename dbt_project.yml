@@ -41,5 +41,8 @@ models:
     example:
       +materialized: view
 
+vars:
+  v_country: 'USA'
+
 seeds:
   schema: LOOKUP_DEV
