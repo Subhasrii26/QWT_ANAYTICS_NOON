@@ -12,3 +12,4 @@ sources:
       - name: Employee
       - name: Offices
       - name: Shipments
+      - name: Suppliers
