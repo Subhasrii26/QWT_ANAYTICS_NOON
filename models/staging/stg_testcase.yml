@@ -1,0 +1,48 @@
+version: 2
+
+models: 
+  - name: stg_customers
+    description: "{{doc('customers_desc')}}"
+    columns:
+      - name: customerid
+        description: Apply unique, not null, even digit constraint 
+        tests:
+          - unique
+          - not_null
+          - is_even
+
+  - name: stg_products
+    columns:
+      - name: productid
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_employee
+    columns:
+      - name: empid
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_shipments
+    columns:
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['shipped','returned','ordered', 'replaced']
+
+  - name: stg_orderdetails
+    columns:
+      - name: orderid
+        tests:
+          - relationships:
+              to: ref('stg_orders')
+              field: orderid
+
+  - name: stg_office
+    columns:
+      - name: officeid
+        tests:
+          - is_even
+      
