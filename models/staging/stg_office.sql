@@ -8,6 +8,7 @@ OfficeCity as City,
 OfficeStateProvince as StateProvince,
 OfficePhone as Phone,
 OfficeFax as Fax,
-OfficeCountry aS Country
+OfficeCountry aS country
+
 from
 {{ source('raw_qwt','Offices')}}
