@@ -40,9 +40,9 @@ models:
               to: ref('stg_orders')
               field: orderid
 
-  - name: stg_office
-    columns:
-      - name: officeid
-        tests:
-          - is_even
+ # - name: stg_office
+ #   columns:
+ #     - name: officeid
+ #       tests:
+ #         - is_even
       

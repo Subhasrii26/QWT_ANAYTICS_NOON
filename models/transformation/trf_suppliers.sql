@@ -1,6 +1,6 @@
-{{ config(materialized = 'table', schema = 'transforming_dev') }}
+{{ config(materialized = 'table', schema = env_var('DBT_TRANSFORMSCHEMA','transforming_dev')) }}
 
-{{ config(materialized = 'table', schema = 'transforming_dev') }}
+{{ config(materialized = 'table', schema = env_var('DBT_TRANSFORMSCHEMA','transforming_dev'))}}
  
 select get(xmlget(supplierinfo,'SupplierID'),'$') as SupplierID,
 get(xmlget(supplierinfo,'CompanyName'),'$')::varchar as CompanyName,

@@ -20,7 +20,7 @@
 -- left join {{ref('stg_office')}} as ofc
 -- on emp.office = ofc.office
 
-{{ config(materialized = 'table', schema = 'transforming_dev') }}
+{{ config(materialized = 'table', schema = env_var('DBT_TRANSFORMSCHEMA','transforming_dev')) }}
  
 with recursive managers
       (indent, office_id, employee_id, employee_name, employee_title, manager_id, manager_name, manager_title)
@@ -54,7 +54,7 @@ with recursive managers
       offices(office_id, office_city, office_country)
       as
       (
-      select office as office_id, city, country from {{ref("stg_office")}}
+      select officeid as office_id, city, country from {{ref("stg_office")}}
       )
  
   select indent, employee_id, employee_name, employee_title , manager_id, manager_name, manager_title, ofc.office_city, ofc.office_country

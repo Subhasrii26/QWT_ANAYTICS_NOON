@@ -3,7 +3,7 @@ version: 2
 seeds:
   - name: divisions
     config:
-      schema: LOOKUP_DEV
+      schema: "{{env_var('DBT_LOOKUPSCHEMA', 'LOOKUP_DEV')}}"
   - name: categories
     config:
-      schema: LOOKUP_DEV
+      schema: "{{env_var('DBT_LOOKUPSCHEMA', 'LOOKUP_DEV')}}"

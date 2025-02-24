@@ -41,9 +41,9 @@ on-run-end: "{{ dq_tools.store_test_results(results) }}"
 
 models:
   pre-hook:
-    - "Insert into auditing_dev.auditing_qwt_models(modelname,starttime,endtime,duration) values ('{{this}}',current_timestamp,null, null);"
+    - "Insert into {{env_var('DBT_QWTDB', 'QWT_ANALYTICS_DEV')}}.{{env_var('DBT_AUDITSCHEMA', 'AUDITING_DEV')}}.auditing_qwt_models(modelname,starttime,endtime,duration) values ('{{this}}',current_timestamp,null, null);"
   post-hook:
-    - "update auditing_dev.auditing_qwt_models set endtime = current_timestamp, duration = datediff('second',starttime,current_timestamp) where modelname='{{this}}';"
+    - "update {{env_var('DBT_QWTDB', 'QWT_ANALYTICS_DEV')}}.{{env_var('DBT_AUDITSCHEMA', 'AUDITING_DEV')}}.auditing_qwt_models set endtime = current_timestamp, duration = datediff('second',starttime,current_timestamp) where modelname='{{this}}';"
  
   dq_tools:
     +schema: AUDITING_DEV
@@ -51,7 +51,8 @@ models:
 vars:
   v_country: 'USA'
   "dbt_date:time_zone": "Asia/Kolkata"
-  dbt_dq_tool_schema: AUDITING_DEV
+  dbt_dq_tool_schema: "{{env_var('DBT_AUDITSCHEMA','AUDITING_DEV')}}"
+
 
 seeds:
-  schema: LOOKUP_DEV
+  schema: "{{env_var('DBT_LOOKUPSCHEMA', 'LOOKUP_DEV')}}"

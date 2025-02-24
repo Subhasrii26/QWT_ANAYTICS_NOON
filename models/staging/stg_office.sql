@@ -1,7 +1,7 @@
 {{ config(materialized = 'table', database = 'QWT_ANALYTICS_DEV') }}
  
 select 
-Office,
+OfficeID,
 OfficeAddress as Address,
 OfficePostalCode as PostalCode,
 OfficeCity as City,
