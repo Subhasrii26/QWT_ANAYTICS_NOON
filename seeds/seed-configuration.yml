@@ -1,0 +1,9 @@
+version: 2
+ 
+seeds:
+  - name: divisions
+    config:
+      schema: "{{env_var('DBT_LOOKUPSCHEMA', 'LOOKUP_DEV')}}"
+  - name: categories
+    config:
+      schema: "{{env_var('DBT_LOOKUPSCHEMA', 'LOOKUP_DEV')}}"
